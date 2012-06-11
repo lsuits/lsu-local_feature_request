@@ -3,6 +3,14 @@
 $string['pluginname'] = 'Feature Request';
 $string['default_subject'] = 'Moodle Feature Request';
 
+$string['send'] = 'Send';
+
+$string['email'] = 'Outbound Email';
+$string['email_help'] = 'This email will receive the feature request submissions';
+
+$string['body_prepend'] = 'Body prepend';
+$string['body_prepend_help'] = 'This information will be prepend to every feature request submission, in the email body.';
+
 $string['email_subject'] = 'Title';
 $string['email_body'] = 'Description';
 

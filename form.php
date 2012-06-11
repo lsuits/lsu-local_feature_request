@@ -12,10 +12,12 @@ class feature_request_form extends moodleform {
 
         $m =& $this->_form;
 
-        $m->addElement('text', 'email_subject', $_s('email_subject'));
+        $params = array('size' => 60);
+        $m->addElement('text', 'email_subject', $_s('email_subject'), $params);
         $m->setDefault('email_subject', $_s('default_subject'));
 
-        $m->addElement('textarea', 'email_body', $_s('email_body'));
+        $params = array('rows' => 10, 'cols' => 69);
+        $m->addElement('textarea', 'email_body', $_s('email_body'), $params);
 
         $disclaimer = get_config('local_feature_request', 'disclaimer');
 
@@ -24,10 +26,10 @@ class feature_request_form extends moodleform {
         }
 
         $buttons = array(
-            $m->createElement('submit', 'submit', get_string('send')),
+            $m->createElement('submit', 'submit', $_s('send')),
             $m->createElement('cancel')
         );
 
-        $m->addGroup($buttons, 'buttons', '', array(' '), false);
+        $m->addGroup($buttons, 'buttons', '&nbsp;', array(' '), false);
     }
 }

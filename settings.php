@@ -31,5 +31,5 @@ if ($hassiteconfig) {
         get_string('default_disclaimer', 'local_feature_request')
     ));
 
-    $ADMIN->add('plugins', $setting_page);
+    $ADMIN->add('server', $setting_page);
 }

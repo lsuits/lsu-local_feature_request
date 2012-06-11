@@ -15,14 +15,16 @@ $url = new moodle_url('/local/feature_request/');
 
 $PAGE->set_context(get_context_instance(CONTEXT_SYSTEM));
 $PAGE->set_url($url);
+$PAGE->set_heading("$SITE->shortname: $heading");
 $PAGE->set_title($heading);
+$PAGE->navbar->add($SITE->shortname);
 $PAGE->navbar->add($heading);
 
 $feature_form = new feature_request_form();
 
 if ($feature_form->is_cancelled()) {
     redirect(new moodle_url('/my'));
-} else if ($data = $form->get_data()) {
+} else if ($data = $feature_form->get_data()) {
     if (empty($data->email_subject)) {
         $data->email_subject = $_s('default_subject');
     }
@@ -49,9 +51,9 @@ echo $OUTPUT->header();
 echo $OUTPUT->heading($heading);
 
 if (!empty($success)) {
-    $OUTPUT->notification($success, 'notifysuccess');
+    echo $OUTPUT->notification($success, 'notifysuccess');
 } else if (!empty($failure)) {
-    $OUTPUT->notification($failure);
+    echo $OUTPUT->notification($failure);
 }
 
 $feature_form->display();
