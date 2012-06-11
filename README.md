@@ -19,7 +19,7 @@ Visit the [Moodle Docs][moodle_local] for more information about local plugins.
 
 ## Contributing
 
-Feel free to report an problems or issues on the [issue tracker][issues].
+Feel free to report any problems or issues on the [issue tracker][issues].
 
 Patches are welcome, but github pull requests are prefered.
 
