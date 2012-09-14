@@ -22,7 +22,7 @@ class feature_request_form extends moodleform {
         $disclaimer = get_config('local_feature_request', 'disclaimer');
 
         if ($disclaimer) {
-            $m->addElement('static', 'disclaimer', $_s('disclaimer'), $disclaimer);
+            $m->addElement('static', 'disclaimer', $_s('disclaimer'), get_string('default_disclaimer', 'local_feature_request'));
         }
 
         $buttons = array(
