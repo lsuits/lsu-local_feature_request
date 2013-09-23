@@ -30,7 +30,8 @@ if ($feature_form->is_cancelled()) {
     }
 
     $subject = $data->email_subject;
-    $body = get_config('local_feature_request', 'body_prepend') .
+    $body  = sprintf("Originating host: %s\n\n",$CFG->wwwroot);
+    $body .= get_config('local_feature_request', 'body_prepend') .
         "\n\n" . $data->email_body;
 
     $to_user = new stdClass;
