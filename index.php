@@ -13,7 +13,7 @@ $heading = $_s('pluginname');
 
 $url = new moodle_url('/local/feature_request/');
 
-$PAGE->set_context(get_context_instance(CONTEXT_SYSTEM));
+$PAGE->set_context(context_system::instance());
 $PAGE->set_url($url);
 $PAGE->set_heading("$SITE->shortname: $heading");
 $PAGE->set_title($heading);
@@ -36,10 +36,8 @@ if ($feature_form->is_cancelled()) {
 
     $to_user = new stdClass;
     $to_user->email = get_config('local_feature_request', 'email');
-    $to_user->deleted = 0;
-    $to_user->auth = 'manual';
-    $to_user->emailstop = 0;
-    $to_user->mnethostid = 1;
+    $to_user->id = $USER->id;
+    $to_user->mailformat = 0;
 
     if (email_to_user($to_user, $USER, $subject, $body)) {
         $success = $_s('success');
