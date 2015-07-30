@@ -19,7 +19,6 @@ $PAGE->set_heading("$SITE->shortname: $heading");
 $PAGE->set_title($heading);
 $PAGE->navbar->add($SITE->shortname);
 $PAGE->navbar->add($heading);
-
 $feature_form = new feature_request_form();
 
 if ($feature_form->is_cancelled()) {
@@ -32,7 +31,13 @@ if ($feature_form->is_cancelled()) {
     $subject = $data->email_subject;
     $body  = sprintf("Originating host: %s\n\n",$CFG->wwwroot);
     $body .= get_config('local_feature_request', 'body_prepend') .
-        "\n\n" . $data->email_body;
+        "\n\n" . $data->email_body
+            . get_string('user_info_append', 'local_feature_request') . "\n\n"
+            . get_string('userid', 'local_feature_request') . $USER->id . " \n\n "
+            . get_string('username', 'local_feature_request') . $USER->username . " \n\n "
+            . get_string('idnumber', 'local_feature_request') . $USER->idnumber . " \n\n "
+            . get_string('firstname', 'local_feature_request') . $USER->firstname . "\n\n"
+            . get_string('lastname', 'local_feature_request') . $USER->lastname;
 
     $to_user = new stdClass;
     $to_user->email = get_config('local_feature_request', 'email');

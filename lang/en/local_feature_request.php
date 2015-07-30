@@ -27,3 +27,10 @@ $string['default_disclaimer'] = '<p>
 <p>Submissions will be posted along with the name of the submitter.</p>
 <p>Should there be any questions or need for further clarification regarding the submission, you may be contacted by a Moodle administrator.</p>
 <p>Thank you for your ideas and suggestions.</p>';
+
+$string['user_info_append'] = "\n\n USER INFO ";
+$string['userid'] = ' userid = ';
+$string['username'] = 'username = ';
+$string['idnumber'] = 'idnumber = ';
+$string['firstname'] = 'firstname = ';
+$string['lastname'] = 'lastname = ';
