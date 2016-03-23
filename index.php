@@ -1,7 +1,28 @@
 <?php
 
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * @package   local_feature_request
+ * @copyright 2016 Louisiana State University, Jason Peak, Philip Cali, Adam Zapletal, Dave Elliott, Robert Russo
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 require_once '../../config.php';
-require_once 'form.php';
+require_once $CFG->dirroot . '/local/feature_request/form.php';
 
 require_login();
 
@@ -31,11 +52,9 @@ if ($feature_form->is_cancelled()) {
     $subject = $data->email_subject;
     $body  = sprintf("Originating host: %s\n\n",$CFG->wwwroot);
     $body .= get_config('local_feature_request', 'body_prepend') .
-        "\n\n" . $data->email_body
+        "\n\n" . $data->email_body . "\n\n\n\n"
             . get_string('user_info_append', 'local_feature_request') . "\n\n"
-            . get_string('userid', 'local_feature_request') . $USER->id . " \n\n "
             . get_string('username', 'local_feature_request') . $USER->username . " \n\n "
-            . get_string('idnumber', 'local_feature_request') . $USER->idnumber . " \n\n "
             . get_string('firstname', 'local_feature_request') . $USER->firstname . "\n\n"
             . get_string('lastname', 'local_feature_request') . $USER->lastname;
 
